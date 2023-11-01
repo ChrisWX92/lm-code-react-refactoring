@@ -34,13 +34,13 @@ function App() {
   };
 
   const renderReviewScore = (score: number) => {
-    const scoreRepresentationUsingACuteLilPlanetEmoji = [];
+    const icons = [];
     for (let i = 0; i < score; i++) {
-      scoreRepresentationUsingACuteLilPlanetEmoji.push(
+      icons.push(
         <span key={uuid()}>🪐</span>
       );
     }
-    return scoreRepresentationUsingACuteLilPlanetEmoji;
+    return icons;
   };
 
   return (
