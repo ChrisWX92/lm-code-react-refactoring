@@ -16,7 +16,7 @@ export const useFetch = () => {
   return { data, isLoading, error };
 };
 
-interface TripDatum {
+export interface TripDatum {
   id: string;
   tripName: string;
   description: string;

@@ -1,8 +1,8 @@
-import React from 'react';
+import { TripDatum } from "../hooks/useFetch";
 
-export const tripsSection = () => (
+export const tripsSection = (trips:number, data : TripDatum[], setBoughtIt : React.Dispatch<React.SetStateAction<boolean>>) => (
 <div className="trips">
-<h3>We found {tripsSection} trips for you!</h3>{" "}
+<h3>We found {trips} trips for you!</h3>{" "}
 <ul className="trip-list">
   {data.map(
     ({
@@ -39,7 +39,7 @@ export const tripsSection = () => (
           <button
             className="grid-col-span-2 trip-book-button"
             disabled={!isBookable}
-            onClick={handleClick}
+            onClick={handleClick(setBoughtIt)}
             value={`${tripName}/${cost}`}
           >
             {isBookable ? "book now" : "fully booked"}
@@ -50,3 +50,18 @@ export const tripsSection = () => (
   )}
 </ul>
 </div>);
+
+const handleClick = (e: React.MouseEvent<HTMLButtonElement>, setBoughtIt : React.Dispatch<React.SetStateAction<boolean>>) => {
+  setBoughtIt(true);
+  if (e.currentTarget.value) {
+    const stuff = e.currentTarget.value.split("/");
+    const experience = stuff[0];
+    const cost = parseInt(stuff[1]);
+    alert(
+      `Okie dokie, so you've bought the '${experience}' excursion, at a cost of ${
+        cost &&
+        cost.toLocaleString("en-GB", { style: "currency", currency: "GBP" })
+      }\rNice one 🚀`
+    );
+  }
+};

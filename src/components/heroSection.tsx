@@ -1,6 +1,7 @@
-import React from 'react';
+import { HeroDeets } from '../hooks/useHero';
+import { v4 as uuid } from "uuid";
 
-export const heroSection = ({heroics}) => (
+export const heroSection = (heroics : HeroDeets) => (
     <div
     className="hero-section"
     style={{
@@ -28,3 +29,13 @@ export const heroSection = ({heroics}) => (
     </ul>
   </div>
   );
+
+  const renderReviewScore = (score: number) => {
+    const icons = [];
+    for (let i = 0; i < score; i++) {
+      icons.push(
+        <span key={uuid()}>🪐</span>
+      );
+    }
+    return icons;
+  };
