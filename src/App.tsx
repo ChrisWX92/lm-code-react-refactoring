@@ -8,10 +8,10 @@ import { tripsSection } from "./components/tripsSection";
 
 function App() {
   const [trips, setTrips] = useState(0);
-  const [nav, setNav] = useState<string[]>([]);
-  const [boughtIt, setBoughtIt] = useState(false);
-  const { data, isLoading, error } = useFetch();
-  const { heroics, waitAMo, fail } = useHero();
+  const [, setNav] = useState<string[]>([]);
+  const [, setBoughtIt] = useState(false);
+  const { data, isLoading } = useFetch();
+  const { heroics, waitAMo } = useHero();
 
   useEffect(() => {
     setNav(() => {
