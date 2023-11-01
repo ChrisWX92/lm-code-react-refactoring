@@ -39,7 +39,7 @@ export const tripsSection = (trips:number, data : TripDatum[], setBoughtIt : Rea
           <button
             className="grid-col-span-2 trip-book-button"
             disabled={!isBookable}
-            onClick={handleClick(setBoughtIt)}
+            onClick={(e) => handleClick(e, setBoughtIt)}
             value={`${tripName}/${cost}`}
           >
             {isBookable ? "book now" : "fully booked"}
