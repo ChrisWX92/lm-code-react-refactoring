@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = () => {
-  const [data, setData] = useState<TripDatum[] | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [data, setData] = useState<Trip[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
+    setLoading(true);
     setTimeout(() => {
-      setData(tripData);
-      setIsLoading(false);
+      setData(data);
+      setLoading(false);
     }, 800);
   }, []);
 
-  return { data, isLoading, error };
+  return { data, loading, error };
 };
 
-export interface TripDatum {
+export interface Trip {
   id: string;
   tripName: string;
   description: string;
@@ -26,9 +26,9 @@ export interface TripDatum {
   isBookable: boolean;
 }
 
-type TripData = Array<TripDatum>;
+type Trips = Array<Trip>;
 
-const tripData: TripData = [
+const trips: Trips = [
   {
     id: "1a",
     tripName: "Ripley's Flight School",

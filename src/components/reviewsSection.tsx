@@ -1,11 +1,11 @@
-import { HeroDeets } from '../hooks/useHero';
+import { ReviewPane } from '../hooks/useReview';
 import { v4 as uuid } from "uuid";
 
-export const heroSection = (heroics : HeroDeets) => (
+export const ReviewsSection = (reviews : ReviewPane) => (
     <div
     className="hero-section"
     style={{
-      background: `linear-gradient(0deg, rgba(10 10 10 / 90%), rgba(25 119 25 / 60%)), url(${heroics.image})`,
+      background: `linear-gradient(0deg, rgba(10 10 10 / 90%), rgba(25 119 25 / 60%)), url(${reviews.image})`,
       backgroundSize: "cover",
       backgroundPosition: "50% 20%",
     }}
@@ -16,7 +16,7 @@ export const heroSection = (heroics : HeroDeets) => (
       these smashing reviews from customers just like you!
     </p>
     <ul className="testimonials">
-      {heroics.testimonials.map(({ name, rating, spiel, social }) => {
+      {reviews.testimonials.map(({ name, rating, spiel, social }) => {
         return (
           <li key={name} className="test-card">
             <h4>{name}</h4>
