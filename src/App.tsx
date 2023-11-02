@@ -7,26 +7,26 @@ import { TripsSection } from "./components/tripsSection";
 import { ReviewsSection } from "./components/reviewsSection";
 
 function App() {
-  const [trips, setTrips] = useState(0);
+  const [tripCount, setTripCount] = useState(0);
   const [nav , setNav] = useState<string[]>([]);
   const [, setBought] = useState(false);
-  const { data, loading } = useFetch();
+  const { trips, loading } = useFetch();
   const { reviews, wait } = useReview();
 
   useEffect(() => {
     setNav(() => {
       return ["trending", "your orders", "community"];
     });
-    if (reviews) if (data) setTrips(data.length);
-  }, [data, reviews]);
+    if (reviews) if (trips) setTripCount(trips.length);
+  }, [trips, reviews]);
 
   return (
     <>
       <Header nav={nav} />
       {wait && <p>...getting heroics...</p>}
-      {reviews && ReviewsSection(reviews)}
+      {reviews && <ReviewsSection {...reviews}/>}
       {loading && <h2>Loading...</h2>}
-      {data && trips && TripsSection(trips, data, setBought)}
+      {trips && tripCount && <TripsSection count={tripCount} trips={trips} setBought={setBought} />}
     </>
   );
 }

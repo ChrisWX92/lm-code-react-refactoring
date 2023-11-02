@@ -16,7 +16,7 @@ export const ReviewsSection = (reviews : ReviewPane) => (
       these smashing reviews from customers just like you!
     </p>
     <ul className="testimonials">
-      {reviews.testimonials.map(({ name, rating, spiel, social }) => {
+      {reviews.reviews.map(({ name, rating, spiel, social }) => {
         return (
           <li key={name} className="test-card">
             <h4>{name}</h4>

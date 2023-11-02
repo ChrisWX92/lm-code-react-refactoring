@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
 export const useFetch = () => {
-  const [data, setData] = useState<Trip[] | null>(null);
+  const [trips, setTrips] = useState<Trips | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error] = useState(null);
 
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      setData(data);
+      setTrips(trips);
       setLoading(false);
     }, 800);
   }, []);
 
-  return { data, loading, error };
+  return { trips, loading, error };
 };
 
 export interface Trip {

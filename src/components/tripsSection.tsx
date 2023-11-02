@@ -1,6 +1,13 @@
+import React from "react";
 import { Trip } from "../hooks/useFetch";
 
-export const TripsSection = (count:number, trips : Trip[], setBought : React.Dispatch<React.SetStateAction<boolean>>) => (
+interface TripsSectionProps {
+  count: number;
+  trips: Trip[];
+  setBought: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const TripsSection: React.FC<TripsSectionProps> = ({ count, trips, setBought }) => (
 <div className="trips">
 <h3>We found {count} trips for you!</h3>{" "}
 <ul className="trip-list">
