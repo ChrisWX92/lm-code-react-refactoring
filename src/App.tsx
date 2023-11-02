@@ -1,32 +1,34 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "./hooks/useFetch";
-import { useHero } from "./hooks/useHero";
+import { useReview } from "./hooks/useReview";
 import "./App.css";
 import { Header } from "./components/header";
-import { heroSection } from "./components/heroSection";
-import { tripsSection } from "./components/tripsSection";
+import { TripsSection } from "./components/tripsSection";
+import { ReviewsSection } from "./components/reviewsSection";
 
 function App() {
-  const [trips, setTrips] = useState(0);
+  const [tripCount, setTripCount] = useState(0);
   const [nav , setNav] = useState<string[]>([]);
-  const [, setBoughtIt] = useState(false);
-  const { data, isLoading } = useFetch();
-  const { heroics, waitAMo } = useHero();
+  const [, setBought] = useState(false);
+  const { trips, loading } = useFetch();
+  const { reviews, wait } = useReview();
 
   useEffect(() => {
     setNav(() => {
       return ["trending", "your orders", "community"];
     });
-    if (heroics) if (data) setTrips(data.length);
-  }, [data, heroics]);
+    if (reviews) if (trips) setTripCount(trips.length);
+  }, [trips, reviews]);
 
   return (
     <>
       <Header nav={nav} />
-      {waitAMo && <p>...getting heroics...</p>}
-      {heroics && heroSection(heroics)}
-      {isLoading && <h2>Loading...</h2>}
-      {data && trips && tripsSection(trips, data, setBoughtIt)}
+      {wait && <p>...loading testimonials...</p>}
+      <main>
+      {reviews && <ReviewsSection {...reviews}/>}
+      {loading && <h2>Loading...</h2>}
+      {trips && <TripsSection count={tripCount} trips={trips} setBought={setBought} />}
+      </main>
     </>
   );
 }

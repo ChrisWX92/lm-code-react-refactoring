@@ -1,10 +1,17 @@
-import { TripDatum } from "../hooks/useFetch";
+import React from "react";
+import { Trip } from "../hooks/useFetch";
 
-export const tripsSection = (trips:number, data : TripDatum[], setBoughtIt : React.Dispatch<React.SetStateAction<boolean>>) => (
+interface TripsSectionProps {
+  count: number;
+  trips: Trip[];
+  setBought: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const TripsSection: React.FC<TripsSectionProps> = ({ count, trips, setBought }) => (
 <div className="trips">
-<h3>We found {trips} trips for you!</h3>{" "}
+<h3>We found {count} trips for you!</h3>{" "}
 <ul className="trip-list">
-  {data.map(
+  {trips.map(
     ({
       id,
       tripName,
@@ -39,7 +46,7 @@ export const tripsSection = (trips:number, data : TripDatum[], setBoughtIt : Rea
           <button
             className="grid-col-span-2 trip-book-button"
             disabled={!isBookable}
-            onClick={(e) => handleClick(e, setBoughtIt)}
+            onClick={(e) => handleClick(e, setBought)}
             value={`${tripName}/${cost}`}
           >
             {isBookable ? "book now" : "fully booked"}
@@ -51,8 +58,8 @@ export const tripsSection = (trips:number, data : TripDatum[], setBoughtIt : Rea
 </ul>
 </div>);
 
-const handleClick = (e: React.MouseEvent<HTMLButtonElement>, setBoughtIt : React.Dispatch<React.SetStateAction<boolean>>) => {
-  setBoughtIt(true);
+const handleClick = (e: React.MouseEvent<HTMLButtonElement>, setBought : React.Dispatch<React.SetStateAction<boolean>>) => {
+  setBought(true);
   if (e.currentTarget.value) {
     const stuff = e.currentTarget.value.split("/");
     const experience = stuff[0];
