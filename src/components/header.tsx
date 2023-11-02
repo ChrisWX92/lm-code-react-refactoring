@@ -1,6 +1,5 @@
-import React from 'react';
-
-export const header = (nav : string[]) => (
+export const Header = ({ nav }: { nav: string[] }) => (
+  
     <header className="site-header">
         <div className="site-identity">
           <a>
