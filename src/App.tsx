@@ -24,9 +24,11 @@ function App() {
     <>
       <Header nav={nav} />
       {wait && <p>...getting heroics...</p>}
+      <main>
       {reviews && <ReviewsSection {...reviews}/>}
       {loading && <h2>Loading...</h2>}
       {trips && tripCount && <TripsSection count={tripCount} trips={trips} setBought={setBought} />}
+      </main>
     </>
   );
 }

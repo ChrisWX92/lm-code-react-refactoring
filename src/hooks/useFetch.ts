@@ -8,7 +8,7 @@ export const useFetch = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      setTrips(trips);
+      setTrips(tripData);
       setLoading(false);
     }, 800);
   }, []);
@@ -28,7 +28,7 @@ export interface Trip {
 
 type Trips = Array<Trip>;
 
-const trips: Trips = [
+const tripData: Trips = [
   {
     id: "1a",
     tripName: "Ripley's Flight School",
