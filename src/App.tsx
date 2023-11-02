@@ -23,11 +23,11 @@ function App() {
   return (
     <>
       <Header nav={nav} />
-      {wait && <p>...getting heroics...</p>}
+      {wait && <p>...loading testimonials...</p>}
       <main>
       {reviews && <ReviewsSection {...reviews}/>}
       {loading && <h2>Loading...</h2>}
-      {trips && tripCount && <TripsSection count={tripCount} trips={trips} setBought={setBought} />}
+      {trips && <TripsSection count={tripCount} trips={trips} setBought={setBought} />}
       </main>
     </>
   );
