@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "./hooks/useFetch";
-import { useHero } from "./hooks/useHero";
+import { useReview } from "./hooks/useReview";
 import "./App.css";
 import { Header } from "./components/header";
-import { heroSection } from "./components/heroSection";
+import { HeroSection } from "./components/heroSection";
 import { tripsSection } from "./components/tripsSection";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const [nav , setNav] = useState<string[]>([]);
   const [, setBoughtIt] = useState(false);
   const { data, isLoading } = useFetch();
-  const { heroics, waitAMo } = useHero();
+  const { heroics, waitAMo } = useReview();
 
   useEffect(() => {
     setNav(() => {
@@ -24,7 +24,7 @@ function App() {
     <>
       <Header nav={nav} />
       {waitAMo && <p>...getting heroics...</p>}
-      {heroics && heroSection(heroics)}
+      {heroics && Reviews(heroics)}
       {isLoading && <h2>Loading...</h2>}
       {data && trips && tripsSection(trips, data, setBoughtIt)}
     </>

@@ -1,34 +1,34 @@
 import { useEffect, useState } from "react";
 
-export const useHero = () => {
-  const [heroics, setHeroics] = useState<HeroDeets | null>(null);
+export const useReview = () => {
+  const [reviews, setReviews] = useState<ReviewProps | null>(null);
   const [waitAMo, setWaitAMo] = useState<boolean>(false);
   const [fail] = useState(null);
 
   useEffect(() => {
     setWaitAMo(true);
     setTimeout(() => {
-      setHeroics(pureHeroism);
+      setReviews(pureHeroism);
       setWaitAMo(false);
     }, 400);
   }, []);
 
-  return { heroics, waitAMo, fail };
+  return { heroics: reviews, waitAMo, fail };
 };
 
-export interface HeroDeets {
+export interface Review {
   image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80";
-  testimonials: Array<Testimonial>;
+  reviews: Array<ReviewProps>;
 }
 
-interface Testimonial {
+interface ReviewProps {
   name: string;
   rating: number;
   spiel: string;
   social: string;
 }
 
-const pureHeroism: HeroDeets = {
+const pureHeroism: ReviewProps = {
   image:
     "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
   testimonials: [
